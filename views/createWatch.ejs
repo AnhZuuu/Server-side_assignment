@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css" />
+</head>
+<body>
+    <%- include('navbar_admin') %>
+    <h1 style="font-size: 40px !important;"> Add another watch</h1>
+    <form action="/watch/create" method="POST">
+        <input type="hidden" name="id" value="" />
+        <div class="field">
+          <label class="label">Name of the watch</label>
+          <div class="control">
+            <input
+              class="input"
+              type="text"
+              placeholder="Watch's name"
+              name="watchName"
+            />
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Price</label>
+          <div class="control">
+            <input
+              class="input"
+              type="number"
+              placeholder="How much does that cost"
+              name="price"
+            />
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Image</label>
+          <div class="control">
+            <input class="input" type="text" placeholder="URL" name="image" />
+          </div>
+        </div>
+        <div class="field">
+            <label class="label">Description</label>
+            <div class="control">
+              <input class="input" type="text" placeholder="Description" name="watchDescription" />
+            </div>
+          </div>
+        <div class="field">
+          <label class="label">Brand</label>
+          <div class="control">
+            <div class="select">
+              <select name="brand">
+                <% brandData.forEach((brand) => { %>
+                  <option key="<%= brand._id%>" value="<%= brand._id %>"> <%=brand.brandName%>  </option>
+                <% }); %>  
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="field is-grouped">
+          <div class="control">
+            <button class="button is-link" type="submit">Submit</button>
+          </div>
+          <div class="control">
+            <button class="button is-link is-light" type="reset">
+              Cancel
+            </button>
+          </div>
+        </div>
+      </form>
+</body>
+</html>

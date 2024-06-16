@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css"
+    />
+  </head>
+  <body>
+    <%- include('navbar') %>
+    <div class="container">
+      <div class="columns">
+        <div class="column">
+          <img
+            src="data:image/webp;base64,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"
+            alt="ronaldo"
+          />
+        </div>
+        <div class="column">
+          <h1 id="form-title" class="title">Register</h1>
+          <% if (typeof errors != 'undefined') { %> 
+          <% errors.forEach(function(error){ %>
+          <div class="alert alert-warning alert-dismissible" role="alert">
+            <%= error.msg %>
+          </div>
+          <% }); %> <% } %>
+          <form action="/user/register" method="POST">
+            <div class="field">
+              <label class="label">Username</label>
+              <div class="control">
+                <input
+                  class="input"
+                  type="text"
+                  name="username"
+                  placeholder="Username"
+                />
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="label">Password</label>
+              <div class="control">
+                <input
+                  class="input"
+                  type="text"
+                  name="password"
+                  placeholder="Password"
+                />
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="label">Name</label>
+              <div class="control">
+                <input
+                  class="input"
+                  type="text"
+                  name="name"
+                  placeholder="What can we call u?"
+                />
+              </div>
+            </div>
+            <input type="hidden" name="id" />
+            <button id="submit-button" class="button is-primary" type="submit">
+              Submit
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

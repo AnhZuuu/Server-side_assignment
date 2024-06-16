@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css"/>
+  </head>
+  <body>
+    <%- include('navbar') %>
+    
+    <form style="width: 50%; justify-self: end;margin-left: 50px;" method="post">
+      <div class="field">
+        <label class="label">Username</label>
+        <div class="control">
+          <input
+            class="input"
+            name="username"
+            type="text"
+            placeholder="Type your username...."
+          />
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Password</label>
+        <div class="control">
+          <input
+            class="input"
+            name="password"
+            type="password"
+            placeholder="At least 6 characters"
+          />
+        </div>
+      </div>
+      <div class="field is-grouped">
+        <div class="control">
+          <button class="button is-link">Login</button>
+        </div>
+      </div>
+    </form>
+    <% if(success_msg != ''){ %> <%= success_msg %> <% } %> <% if(error_msg !=
+    ''){ %> <%= error %> <% } %> <% if(error != ''){ %> <%= error %> <% } %>
+  </body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+        <%= title %>
+    </title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css" />
+</head>
+
+<body>
+    <%- include('navbar_admin') %>
+        <div style="margin-right: 700px;">
+            <!-- <button class="button btn-sm btn-label-danger">
+        <a href="/user/logout">Logout</a>
+      </button> -->
+        </div>
+        <div class="buttons">
+            <!-- <a href="/user/register" class="button is-primary">
+          <strong>Sign up</strong>
+        </a> -->
+            <a href="/watch/create" class="button is-warning"> Add watch </a>
+        </div>
+
+        <% watchData.forEach(watch=> { %>
+            <div class="card hover-target" style="width:20%">
+                <div class="card-content hover-target">
+                    <div class="media">
+                        <div class="media-left">
+                            <figure class="image is-48x48">
+                                <img src="<% watch.image %>" alt="Placeholder image" />
+                            </figure>
+                        </div>
+                        <div class="media-content">
+                            <p class="title is-4">
+                                <%= watch.watchName %>
+                            </p>
+                            <p class="subtitle is-6">
+                                <%= watch.brand.brandName %>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="content">
+                        <%= watch.watchDescription %>
+                            <br />
+                            <strong>
+                                $<%= watch.price%>
+                            </strong>
+                            <br />
+                    </div>
+                </div>
+                <button>
+                    <a href="/watch/edit/:watchId" class="button is-warning" onclick="">Edit</a>
+                </button>
+                <button><a class="button is-danger" href="/watch/delete/<%=watch.id%>">Delete</a></button>
+                <!-- <form action="/blackpink" method="POST" style="display: inline">
+                    <button type="submit" class="button is-danger">
+                        Delete
+                    </button>
+                </form> -->
+            </div>
+
+            <!-- <button class="hidden-button">Button 1</button>
+            <button class="hidden-button">Button 2</button> -->
+            <% }); %>
+
+
+
+</body>
+<style>
+    .hover-target {
+        /* Style your div here */
+        color: blue;
+        padding: 10px;
+        cursor: pointer;
+        /* Optional: Show a pointer cursor on hover */
+    }
+
+    .hidden-button {
+        display: none;
+        position: absolute;
+        /* Adjust positioning based on your needs */
+        bottom: 5px;
+        right: 5px;
+        padding: 5px;
+        border: 1px solid #ccc;
+    }
+
+    .hover-target:hover .hidden-button {
+        display: block;
+    }
+</style>
+
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css" />
+    <title>
+        <% title %>
+    </title>
+    <script>
+          function editBrand(id) {
+            fetch(`/brands/${id}/detail`)
+              .then((response) => response.json())
+              .then((data) => {
+                document.querySelector('input[name="brandName"]').value = data.brandName;
+                document.querySelector('input[name="id"]').value = data._id;
+                document.querySelector("#form-title").innerText = "Edit Brands";
+                document.querySelector("#submit-button").innerText = "Update";
+                document.querySelector("form").action = `/brands/${id}`;
+              });
+          }
+    </script>
+</head>
+
+<body>
+    <%- include('navbar') %>
+        <div class="container">
+            <div class="columns">
+                <div class="column">
+                    <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% brandData.forEach(br=> { %>
+                                <tr>
+                                    <td>
+                                        <%= br.brandName %>
+                                    </td>
+                                    <td>
+                                        <button>
+                                            <a href="#" class="button is-warning" onclick="editBrand('<%= br._id %>')">Edit</a>
+                                        </button>
+                                        <form action="/brands/<%= br.id %>" method="get" style="display: inline">
+                                            <button action="/brands/<%= br.id %>" type="submit"
+                                                class="button is-danger">
+                                                Delete
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                <% }) %>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="column">
+                    <h1 id="form-title" class="title">Add brand</h1>
+                    <form action="/brands" method="POST">
+                        <input type="hidden" name="id" value="" />
+                        <div class="field">
+                            <label class="label">Name</label>
+                            <div class="control">
+                                <input name="brandName" class="input" type="text" placeholder="name" />
+                            </div>
+                        </div>
+
+                        <div class="field is-grouped">
+                            <div class="control">
+                                <button class="button is-link" type="submit">Submit</button>
+                            </div>
+                            <div class="control">
+                                <button class="button is-link is-light" type="reset">
+                                    Cancel
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+</body>
+
+</html>

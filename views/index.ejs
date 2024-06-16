@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css"
+    />
+    <title><% title %></title>
+    <script>
+      function editMember(id) {
+        fetch(`/blackpink/${id}/detail`)
+          .then((response) => response.json())
+          .then((data) => {
+            document.querySelector('input[name="name"]').value = data.name;
+            document.querySelector('input[name="age"]').value = data.age;
+            document.querySelector('input[name="img"]').value = data.img;
+            document.querySelector('select[name="nation"]').value = data.nation;
+            document.querySelector('input[name="id"]').value = data._id;
+            document.querySelector("#form-title").innerText = "Edit Member";
+            document.querySelector("#submit-button").innerText = "Update";
+            document.querySelector("form").action = `/blackpink/${id}`;
+          });
+      }
+    </script>
+  </head>
+  <body>
+    <%- include('navbar') %>
+    <div class="container">
+      <div class="columns">
+        <div class="column">
+          <table
+            class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth"
+          >
+            <thead>
+              <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Nation</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% blackpinkData.forEach(bl => { %>
+              <tr>
+                <td>
+                  <img
+                    src="<%= bl.img %>"
+                    alt="image"
+                    class="image is-128x128"
+                  />
+                </td>
+                <td><%= bl.name %></td>
+                <td><%= bl.age %></td>
+                <td><%= bl.nation %></td>
+                <td>
+                  <button>
+                    <a
+                      href="#"
+                      class="button is-warning"
+                      onclick="editMember('<%= bl._id %>')"
+                      >Edit</a
+                    >
+                  </button>
+                  <form
+                    action="/blackpink/<%= bl._id %>"
+                    method="POST"
+                    style="display: inline"
+                  >
+                    <button type="submit" class="button is-danger">
+                      Delete
+                    </button>
+                  </form>
+                </td>
+              </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+        <div class="column">
+          <h1 id="form-title" class="title">Add Member</h1>
+          <form action="/blackpink" method="POST">
+            <input type="hidden" name="id" value="" />
+            <div class="field">
+              <label class="label">Name</label>
+              <div class="control">
+                <input
+                  class="input"
+                  type="text"
+                  placeholder="name"
+                  name="name"
+                />
+              </div>
+            </div>
+            <div class="field">
+              <label class="label">Age</label>
+              <div class="control">
+                <input
+                  class="input"
+                  type="number"
+                  placeholder="age"
+                  name="age"
+                />
+              </div>
+            </div>
+            <div class="field">
+              <label class="label">Image</label>
+              <div class="control">
+                <input class="input" type="text" placeholder="URL" name="img" />
+              </div>
+            </div>
+            <div class="field">
+              <label class="label">Nation</label>
+              <div class="control">
+                <div class="select">
+                  <select name="nation">
+                    <option>Korea</option>
+                    <option>VN</option>
+                    <option>China</option>
+                    <option>Portugal</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="field is-grouped">
+              <div class="control">
+                <button class="button is-link" type="submit">Submit</button>
+              </div>
+              <div class="control">
+                <button class="button is-link is-light" type="reset">
+                  Cancel
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

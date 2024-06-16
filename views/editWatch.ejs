@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form method="post">
+        <div class="field">
+          <label class="label">Name</label>
+          <div class="control">
+            <input
+              name="name"
+              class="input"
+              type="text"
+              placeholder="Text input"
+              value = "<%= watchData.watchName %>"
+            />
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Price</label>
+          <div class="control">
+            <input
+              name="price"
+              class="input"
+              type="number"
+              placeholder="Text input"
+              value = "<%= watchData.price %>"
+            />
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Image</label>
+          <div class="control has-icons-left has-icons-right">
+            <input
+              name="image"
+              class="input is-success"
+              type="text"
+              placeholder="Text input"
+              value = "<%= watchData.image %>"
+            />
+            <span class="icon is-small is-left">
+              <i class="fas fa-user"></i>
+            </span>
+            <span class="icon is-small is-right">
+              <i class="fas fa-check"></i>
+            </span>
+          </div>
+        </div>
+
+        <div class="field">
+            <label class="label">Description</label>
+            <div class="control has-icons-left has-icons-right">
+              <input
+                name="watchDescription"
+                class="input is-success"
+                type="text"
+                placeholder="Text input"
+                value = "<%= watchData.watchDescription %>"
+              />
+              <span class="icon is-small is-left">
+                <i class="fas fa-user"></i>
+              </span>
+              <span class="icon is-small is-right">
+                <i class="fas fa-check"></i>
+              </span>
+            </div>
+          </div>
+
+        <div class="field">
+          <label class="label">Nation</label>
+          <div class="control">
+            <!-- <div class="select">
+              <select name="nation">
+                <option value="<%= blackpinkData.nation %>"><%= blackpinkData.nation %></option>
+                <option value="Thailand">Thailand</option>
+                <option value="Korea">Korea</option>
+                <option value="Vietnam">Việt Nam</option>
+              </select> -->
+            </div>
+          </div>
+        </div>
+        <div class="field is-grouped">
+          <div class="control">
+            <button class="button is-link">Submit</button>
+          </div>
+          <div class="control">
+            <button class="button is-link is-light">Cancel</button>
+          </div>
+        </div>
+      </form>
+    </form>
+</body>
+
+</html>
