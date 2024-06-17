@@ -43,7 +43,8 @@ const watchesSchema = new Schema({
     brand : {
         type : mongoose.Schema.Types.ObjectId, 
         ref : "brand", 
-        require: true},
+        require: true
+    },
     },{timestamps: true}
 )
 

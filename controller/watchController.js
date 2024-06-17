@@ -8,14 +8,14 @@ class watchController {
         Watches.find({})
             .populate("brand")
             .then((watch) => {
-                Brands.find({})
-                    .then((brand) => {
+                // Brands.find({})
+                    // .then((brand) => {
                         res.render('watches', {
                             title: 'List of watches',
                             watchData: watch,
-                            brandData: brand,
+                            // brandData: brand,
                         })
-                    })
+                    // })
             })
 
     }
@@ -26,7 +26,7 @@ class watchController {
             .then((brands) => {
                 res.render('createWatch', {
                     title: 'List of watches',
-                    brandData: brands,
+                    brandData: brands
                 })
             })
     }
@@ -75,10 +75,15 @@ class watchController {
     formEdit(req, res) {
         let viewsData = {};
         Watches.findById(req.params.watchId)
+        .populate("brand")
             .then((watch) => {
-                res.render('editWatch', {
-                    title: 'Edit Page',
-                    watchData: watch,
+                Brands.find({})
+                .then((brand) => {
+                    res.render('editWatch', {
+                        title: 'Edit Page',
+                        watchData: watch,
+                        brandData: brand
+                })              
                 })
             })
     }

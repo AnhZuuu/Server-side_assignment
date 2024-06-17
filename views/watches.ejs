@@ -23,49 +23,49 @@
         </a> -->
             <a href="/watch/create" class="button is-warning"> Add watch </a>
         </div>
-
-        <% watchData.forEach(watch=> { %>
-            <div class="card hover-target" style="width:20%">
-                <div class="card-content hover-target">
-                    <div class="media">
-                        <div class="media-left">
-                            <figure class="image is-48x48">
-                                <img src="<% watch.image %>" alt="Placeholder image" />
-                            </figure>
+        <div>
+            <% watchData.forEach((watch)=> { %>
+                <div class="card hover-target" style="width:20%">
+                    <div class="card-content hover-target">
+                        <div class="media">
+                            <div class="media-left">
+                                <figure class="image is-48x48">
+                                    <img src="<% watch.image %>" alt="Placeholder image" />
+                                </figure>
+                            </div>
+                            <div class="media-content">
+                                <p class="title is-4">
+                                    <%= watch.watchName %>
+                                </p>
+                                <p class="subtitle is-6">
+                                    <%= watch.brand.brandName %>
+                                </p>
+                            </div>
                         </div>
-                        <div class="media-content">
-                            <p class="title is-4">
-                                <%= watch.watchName %>
-                            </p>
-                            <p class="subtitle is-6">
-                                <%= watch.brand.brandName %>
-                            </p>
+
+                        <div class="content">
+                            <%= watch.watchDescription %>
+                                <br />
+                                <strong>
+                                    $<%= watch.price%>
+                                </strong>
+                                <br />
                         </div>
                     </div>
-
-                    <div class="content">
-                        <%= watch.watchDescription %>
-                            <br />
-                            <strong>
-                                $<%= watch.price%>
-                            </strong>
-                            <br />
-                    </div>
-                </div>
-                <button>
-                    <a href="/watch/edit/:watchId" class="button is-warning" onclick="">Edit</a>
-                </button>
-                <button><a class="button is-danger" href="/watch/delete/<%=watch.id%>">Delete</a></button>
-                <!-- <form action="/blackpink" method="POST" style="display: inline">
+                    <button>
+                        <a href="/watch/edit/<%=watch.id%>" class="button is-warning" onclick="">Edit</a>
+                    </button>
+                    <button><a class="button is-danger" href="/watch/delete/<%=watch.id%>">Delete</a></button>
+                    <!-- <form action="/blackpink" method="POST" style="display: inline">
                     <button type="submit" class="button is-danger">
                         Delete
                     </button>
                 </form> -->
-            </div>
-
-            <!-- <button class="hidden-button">Button 1</button>
+                </div>
+        </div>
+        <!-- <button class="hidden-button">Button 1</button>
             <button class="hidden-button">Button 2</button> -->
-            <% }); %>
+        <% }); %>
 
 
 

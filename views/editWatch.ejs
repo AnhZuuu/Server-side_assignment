@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css" />
 </head>
 
 <body>
@@ -13,7 +14,7 @@
           <label class="label">Name</label>
           <div class="control">
             <input
-              name="name"
+              name="watchName"
               class="input"
               type="text"
               placeholder="Text input"
@@ -72,15 +73,14 @@
           </div>
 
         <div class="field">
-          <label class="label">Nation</label>
+          <label class="label">Brand</label>
           <div class="control">
-            <!-- <div class="select">
-              <select name="nation">
-                <option value="<%= blackpinkData.nation %>"><%= blackpinkData.nation %></option>
-                <option value="Thailand">Thailand</option>
-                <option value="Korea">Korea</option>
-                <option value="Vietnam">Việt Nam</option>
-              </select> -->
+            <Select name = "brand">
+              <option value="<%= watchData.brand._id %>"> <%= watchData.brand.brandName %> </option>
+                <% brandData.forEach((brand) => { %>
+                  <option value = "<%= brand._id %>" ><%= brand.brandName %></option>
+                  <% }); %>
+            </Select>
             </div>
           </div>
         </div>
